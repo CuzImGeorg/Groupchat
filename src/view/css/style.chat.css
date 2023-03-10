@@ -1,0 +1,39 @@
+body{
+    background:#887161;
+}
+
+
+#eingabebereich{
+
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+
+}
+
+#eingabe{
+
+    width: 16rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#benutzername{
+
+    background:#ddb89d;
+    outline: none;
+    padding: 1rem;
+    float:left;
+}
+
+#send{
+
+    outline: black 0.1rem solid;
+    background:#ddb89d;
+    height: 3.2rem;
+    width: 4rem;
+    float:right;
+}
