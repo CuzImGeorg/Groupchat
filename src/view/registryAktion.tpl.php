@@ -5,7 +5,7 @@
     <title>Login</title>
 </head>
 <body>
-<form id="form" action="index?aktion=registry" method="POST" >
+<form id="form" action="index.php?aktion=registry" method="POST" >
 
     <div style="float: left">
         <label for="vorname">Vorname<br></label>
