@@ -5,17 +5,18 @@
         <title>Login</title>
     </head>
     <body>
-       <form action="index?aktion=login" method="POST" >
+       <form action="index.php?aktion=login" method="POST" >
+
         <div>
-        <label>Nickname<br></label>
-        
-        <input type="text" name="nickname" value=<?= $benutzer->getNickname() ?> required />
-        </div>
-        
+            <label for="nickname">Nickname<br></label>
+            <input type="text" name="nickname" id="nickname" value=<?= $benutzer->getNickname() ?> required />
+       </div>
+
         <div>
-        <label>Password<br></label> 
-        <input type="password" name="password"  value=<?= $benutzer->getPassword() ?> required> 
+            <label for="password">Password<br></label>
+            <input type="password" name="password" id="password"  value=<?= $benutzer->getPassword() ?> required>
         </div>
+           <p>--------------------------</p>
         <input type="submit" value="login" />
         <button><a href="index.php?aktion=registry">Registrieren</a></button>  
        </form>
