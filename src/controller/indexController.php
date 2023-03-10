@@ -1,22 +1,10 @@
 <?php
+require_once('controllerBase.php');
 
-class Controller {
-    private $context = array();
+class Controller extends ControllerBase {
 
 
-    public function run($aktion){
-        $this->$aktion(); // LOGIK
-        $this->generatePage($aktion); //VIEW
-    }
 
-    private function generatePage($template){
-        extract($this->context);
-        require_once 'src/view/'.$template."Aktion.tpl.php";
-
-    }
-    private function addContext($key, $value){
-        $this->context[$key] = $value;
-    }
 
    public function login() {
         if($_POST){

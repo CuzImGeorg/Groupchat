@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" href="src/view/css/style.registry.css">
+
     </head>
     <body>
        <form action="index.php?aktion=login" method="POST" >
@@ -16,7 +18,6 @@
             <label for="password">Password<br></label>
             <input type="password" name="password" id="password"  placeholder=<?= $benutzer->getPassword() ?> required>
         </div>
-           <p>--------------------------</p>
         <input type="submit" value="login" />
         <button><a href="index.php?aktion=registry">Registrieren</a></button>  
        </form>

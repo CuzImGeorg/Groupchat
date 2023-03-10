@@ -1,0 +1,27 @@
+:root {
+    --text: #a7a79e;
+    --light: #bcb6b4;
+    --middle: #87858e;
+    --dark: #353434;
+    --rounding:1rem;
+}
+
+body{
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--text);
+    background:var(--dark);
+}
+
+input, button {
+    border-style: none;
+    color: #000;
+    margin-bottom: 15px;
+    margin-right: 10px;
+
+    background: var(--light);
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
