@@ -8,7 +8,6 @@
        <form action="index?aktion=login" method="POST" >
         <div>
         <label>Nickname<br></label>
-        
         <input type="text" name="nickname" value=<?= $benutzer->getNickname() ?> required />
         </div>
         
@@ -16,8 +15,8 @@
         <label>Password<br></label> 
         <input type="password" name="password"  value=<?= $benutzer->getPassword() ?> required> 
         </div>
-        <input type="submit" value="login" />
-        <button><a href="index.php?aktion=registry">Registrieren</a></button>  
+        <input type="submit" value="registriere" />
+        <button><a href="index.php?aktion=Login">Login</a></button>  
        </form>
     </body>
 </html>
