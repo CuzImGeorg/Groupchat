@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat</title>
-    <link rel="stylesheet" href="css/style.chat.css">
+    <link rel="stylesheet" href="src/view/css/style.chat.css">
 </head>
 <body>
     <div id="messages">
@@ -18,7 +18,7 @@
         </p>
     </div>
     <div id="eingabebereich">
-        <label id="benutzername"> BENUTZERNAME </label>
+        <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
         <input type="text" name="eingabe" id="eingabe">
         <input type="button" id="send" value="SEND">
     </div>

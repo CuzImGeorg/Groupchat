@@ -2,7 +2,7 @@
 
 function autoloadControllers($controllerName)
 {
-    $controllerFile = 'controller/' . $controllerName . '.php';
+    $controllerFile = 'src/controller/' . $controllerName . '.php';
     if (file_exists($controllerFile)) {
         require_once $controllerFile;
     }
@@ -11,7 +11,7 @@ function autoloadControllers($controllerName)
 function autoloadEntities($entityName)
 {
     $entityName = lcfirst($entityName);
-    $entityFile = 'model/entity/' . $entityName . '.php';
+    $entityFile = 'src/model/entity/' . $entityName . '.php';
     if (file_exists($entityFile)) {
         require_once $entityFile;
     }
@@ -19,7 +19,7 @@ function autoloadEntities($entityName)
 
 function autoloadTraits($traitName)
 {
-    $traitFile = 'model/traits/' . $traitName . '.php';
+    $traitFile = 'src/model/traits/' . $traitName . '.php';
     if (file_exists($traitFile)) {
         require_once $traitFile;
     }

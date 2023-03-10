@@ -3,8 +3,8 @@
 class Benutzer {
     use ActiveRecordable, Findable,Deletable,Persistable;
 
-    protected $table = "benutzer";
-    private int $id;
+    protected static $table = "benutzer";
+    private int $id = 0;
     private string $vorname, $nachname, $nickname, $password;
 
     /**
@@ -88,8 +88,10 @@ class Benutzer {
     }
 
     public static function getByNickNameAndPassword($un, $password) : Benutzer | false {
-        $sql = "SELECT * FROM benutzer WHERE nickname like $un and password like $password";
-        return Db::getDB()->query($sql)->fetch();
+        $sql = "SELECT * FROM benutzer WHERE nickname = '$un' and password = '$password'";
+        $a = Db::getDB()->query($sql);
+        $a->setFetchMode(PDO::FETCH_CLASS, 'benutzer');
+        return $a->fetch();
     }
 
 
