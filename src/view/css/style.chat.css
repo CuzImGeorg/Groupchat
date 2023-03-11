@@ -1,11 +1,12 @@
 :root {
-    --text:#E7E8D1;
-    --light: #B85042;
-    --middle: #E7E8D1;
-    --dark: #A7BEAE;
+    --text:#fff;
+    --light:#544e66;
+    --middle: #3e3853;
+    --dark: #292240;
     --rounding:1rem;
 }
 body{
+    font-size: 1rem;
     font-family: monospace;
     font-weight: bold;
     color: var(--text);
@@ -14,22 +15,26 @@ body{
 
 
 #eingabebereich{
+
     border-radius: var(--rounding);
     position: fixed;
     left: 50%;
-    bottom: 20px;
+    bottom: 1%;
     transform: translate(-50%, -50%);
     margin: 0 auto;
 
 }
 
 #eingabe{
+    padding: 0.2rem .7rem ;
+    resize: none;
+    font-size: 1.2rem;
     font-family: monospace;
     font-weight: bold;
     border-radius: var(--rounding);
     outline: black 0.1rem solid;
     background: var(--middle);
-    color: var(--light);
+    color: var(--text);
     width: 16rem;
     height: 3rem;
     margin-left: 1rem;
@@ -37,6 +42,7 @@ body{
 }
 
 #benutzername{
+
     border-radius: var(--rounding);
     outline: black 0.1rem solid;
     background:var(--light);
@@ -45,6 +51,7 @@ body{
 }
 
 #send{
+    font-size: 1rem;
     font-family: monospace;
     font-weight: bold;
     border-radius: var(--rounding);
@@ -57,6 +64,7 @@ body{
     float:right;
 }
 #messages{
+
     border-radius: var(--rounding);
     position: fixed;
     left: 50%;
@@ -81,7 +89,7 @@ body{
 .messege label{
     border-radius: var(--rounding);
     padding: 2%;
-    color: var(--light);
+    color: var(--text);
     background: var(--middle);
 }
 
@@ -90,6 +98,6 @@ body{
     float: right;
     border-radius: var(--rounding);
     padding: 2%;
-    color: var(--middle);
+    color: var(--text);
     background: var(--light);
 }

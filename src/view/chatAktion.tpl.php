@@ -19,7 +19,7 @@
     </div>
     <div id="eingabebereich">
         <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
-        <input type="text" name="eingabe" id="eingabe">
+        <textarea name="eingabe" id="eingabe" > </textarea>
         <input type="button" id="send" value="SEND">
     </div>
 

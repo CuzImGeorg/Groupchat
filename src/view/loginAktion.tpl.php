@@ -7,7 +7,7 @@
 
     </head>
     <body>
-       <form action="index.php?aktion=login" method="POST" >
+       <form  action="index.php?aktion=login" method="POST" >
 
         <div>
             <label for="nickname">Nickname<br></label>
@@ -18,8 +18,11 @@
             <label for="password">Password<br></label>
             <input type="password" name="password" id="password"  placeholder=<?= $benutzer->getPassword() ?> required>
         </div>
-        <input type="submit" value="login" />
-        <button><a href="index.php?aktion=registry">Registrieren</a></button>  
+        <div>
+            <button><a href="index.php?aktion=registry">Registrieren</a></button>
+            <input type="submit" value="login" />
+
+        </div>
        </form>
     </body>
 </html>
