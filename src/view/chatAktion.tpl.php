@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat</title>
-    <script src="src/view/js/chat.js"></script>
+    <script src="rsrc/js/chat.js"></script>
     <link rel="stylesheet" href="src/view/css/style.chat.css">
 </head>
 <body>
