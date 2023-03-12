@@ -4,8 +4,6 @@ require_once('controllerBase.php');
 class Controller extends ControllerBase {
 
 
-
-
    public function login() {
         if($_POST){
             $b = Benutzer::getByNickNameAndPassword($_POST['nickname'], $_POST['password']);
