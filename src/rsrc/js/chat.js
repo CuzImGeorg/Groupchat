@@ -47,10 +47,14 @@ function setmessege(string, notown){
     }
 
     let p=document.createElement('p');
-    console.log(p);
     p.classList.add(m);
     p.innerHTML=ret;
     document.getElementById('messages').appendChild(p);
 
-}
 
+}
+function savemessege(){
+    const text = document.getElementById('eingabebereich').children.item(1);
+    setmessege(text.value,true);
+    text.value="";
+}
