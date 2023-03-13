@@ -1,0 +1,143 @@
+:root {
+    --text:#fff;
+    --light:#544e66;
+    --middle: #3e3853;
+    --dark: #292240;
+    --rounding:1rem;
+}
+body{
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--text);
+    background:var(--middle);
+}
+@keyframes append-animate {
+    from {
+        padding-top: 5%;
+        opacity: 0;
+    }
+    to {
+        padding-top: 1%;
+        opacity: 1;
+
+    }
+}
+
+
+#eingabebereich{
+
+    border-radius: var(--rounding);
+    position: fixed;
+    left: 50%;
+    bottom: 1%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+
+}
+
+#eingabe{
+    padding: 0.2rem .7rem ;
+    resize: none;
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: bold;
+    border-radius: var(--rounding);
+    outline: black 0.1rem solid;
+    background: var(--middle);
+    color: var(--text);
+    width: 16rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#benutzername{
+
+    border-radius: var(--rounding);
+    outline: black 0.1rem solid;
+    background:var(--light);
+    padding: 1rem;
+    float:left;
+}
+
+#send{
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: bold;
+    border-radius: var(--rounding);
+    border:none;
+    color: var(--text);
+    outline: black 0.1rem solid;
+    background:var(--light);
+    height: 3.2rem;
+    width: 4rem;
+    float:right;
+}
+#messages{
+
+    border-radius: var(--rounding);
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translate(-50%, 0);
+    margin: 0 auto;
+    background: var(--dark);
+    height: 85%;
+    width: 80%;
+}
+
+#messages .messege{
+
+   width: 50%;
+    padding: 1% 0;
+    transform: translate(3%, 30%);
+}
+#messages .ownmessege{
+    width: 50%;
+    padding: 1% 0 2% 50%;
+    transform: translate(-3%, 30%);
+    text-align: right;
+}
+
+#messages p{
+    animation: append-animate .3s linear;
+}
+ label.firsttext{
+    padding-top: 2%;
+    border-top-left-radius: var(--rounding);
+    border-top-right-radius: var(--rounding);
+}
+label.oneliner{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: var(--rounding);
+}
+label.lasttext{
+    padding-bottom: 2%;
+
+    border-bottom-left-radius: var(--rounding);
+    border-bottom-right-radius: var(--rounding);
+}
+
+  .messege label{
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 1rem;
+    border: none;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--text);
+    background: var(--middle);
+}
+
+.ownmessege label{
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 1rem;
+    border: none;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--text);
+    background: var(--light);
+}
