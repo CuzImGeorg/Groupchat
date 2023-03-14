@@ -8,10 +8,15 @@ async function home(){
     setmessege("This is my Massage, which I have written as of now",false);
     setmessege("This is a Looooonger Massage",true);
     console.log('Now');
-    await delay(1000);
-    setmessege("This is a later messege",true);
-    console.log('later');
+    for (let i = 0; i <= 10; i++){
+        await delay(1000);
+        setmessege("This is a later messege",true);
+        console.log('later');
+    }
+
 }
+
+
 
 function setmessege(string, notown){
     const array = []
@@ -49,8 +54,9 @@ function setmessege(string, notown){
     let p=document.createElement('p');
     p.classList.add(m);
     p.innerHTML=ret;
-    document.getElementById('messages').appendChild(p);
-
+    let messeges = document.getElementById('messages');
+    messeges.appendChild(p);
+    scrollToBottom(messeges);
 
 }
 function savemessege(){
@@ -58,3 +64,8 @@ function savemessege(){
     setmessege(text.value,true);
     text.value="";
 }
+
+function scrollToBottom(element) {
+    element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
+}
+
