@@ -22,7 +22,7 @@ async function home(){
         setmessege(msg, true);
          }
         }
-        await delay(2000);
+        await delay(500);
     }
 
 }
