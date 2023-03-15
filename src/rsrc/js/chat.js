@@ -69,7 +69,7 @@ function setmessege(string, notown, benutzername, time){
 
     let m = notown ? "messege" : "ownmessege";
     let ret = "";
-    if (notown) ret= benutzername +newtime+":";
+    if (notown&&array.length<=1) ret= benutzername +newtime+":";
     array.forEach(sliceString)
 
     function sliceString(value, pos, array){
@@ -85,6 +85,7 @@ function setmessege(string, notown, benutzername, time){
 
     }
     if(array.length>2)ret+="<br>";
+    if(notown && array.length>2) ret+= benutzername +newtime+":";
     if (!notown) ret +=":"+benutzername+ newtime;
 
     const messeges = document.getElementById('messages');
