@@ -14,7 +14,7 @@
     <div id="eingabebereich">
         <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
         <textarea name="eingabe" id="eingabe" > </textarea>
-        <input type="button"  id="send" onclick="send()" value="SEND">
+        <input type="button"  id="send" onclick="send(<?=$benutzer->getId()?>)" value="SEND">
     </div>
 
 
