@@ -94,21 +94,15 @@ function send(benutzerid){
 
     const msg = document.getElementById("eingabebereich").children.item(1);
     const xhttp = new XMLHttpRequest();
-    let message = {
-        benutzerid: benutzerid,
-        text: msg.value
-    }
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(message);
+            console.log(this.responseText);
             msg.value="";
         }
     };
 
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xhttp.send(JSON.stringify(message));
-
-
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("benutzerid="+benutzerid+"&text="+msg.value);
 }
 
