@@ -7,7 +7,7 @@ class Message
     protected static $table = "message";
 
 
-    private int $id, $benutzerid;
+    private int $id = 0, $benutzerid;
     private string $msgtext;
     private  $time;
 
