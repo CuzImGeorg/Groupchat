@@ -84,7 +84,7 @@ body{
     background: var(--dark);
     height: 85%;
     width: 80%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 
@@ -96,13 +96,10 @@ body{
 #messages .ownmessege{
     width: 50%;
     padding: 1% 0 2% 50%;
-    transform: translate(-3%, 30%);
+    transform: translate(-3%, 2%);
     text-align: right;
 }
 
-#messages p a a a {
-    animation: append-animate .3s linear;
-}
  label.firsttext{
     padding-top: 2%;
     border-top-left-radius: var(--rounding);

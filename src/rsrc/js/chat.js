@@ -9,6 +9,7 @@ async function home(){
     while(true){
 
     const xml = getXml("index.php?controller=ajax&aktion=getAllM");
+    //msgs == null mocht probleme
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
     const msgsL =msgs.children.length;
     let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
@@ -18,11 +19,12 @@ async function home(){
     for(let i = 0; i<msgsL;i++){
         let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
         let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
+        let time = msgs.children.item(msgsL-i-1).getElementsByTagName('time').item(0).childNodes.item(0).nodeValue;
         if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
-            setmessege(msg, false);
+            setmessege(msg, false, benutzer,time);
 
         }else {
-            setmessege(msg, true);
+            setmessege(msg, true, benutzer,time);
 
         }
          }
@@ -44,7 +46,8 @@ function clear(){
     const messeges = document.getElementById('messages');
     messeges.innerHTML="";
 }
-function setmessege(string, notown){
+function setmessege(string, notown, benutzername, time){
+    const newtime =timeToString(time);
     const array = [];
     const strglenght =string.length;
     let j;
@@ -66,22 +69,31 @@ function setmessege(string, notown){
 
     let m = notown ? "messege" : "ownmessege";
     let ret = "";
+    if (notown) ret= benutzername +newtime+":";
     array.forEach(sliceString)
 
     function sliceString(value, pos, array){
     value=value.replaceAll(' ',"&nbsp;");
+    value=value.replaceAll('\n',"&nbsp;");
+
     if (pos==0 && pos==array.length-1) ret+="<label class='oneliner'>"+value+"</label>";
     else if (pos==0) ret+="<label class='firsttext'>"+value+"</label>";
     else if (pos==array.length-1)ret+="<label class='lasttext'>"+value+"</label>";
     else ret+="<label class='midtext'>"+value+"</label>";
-    ret+="<br>";
+
+    if(array.length>2)ret+="<br>";
+
     }
+    if(array.length>2)ret+="<br>";
+    if (!notown) ret +=":"+benutzername+ newtime;
+
     const messeges = document.getElementById('messages');
     let p=document.createElement('p');
     p.classList.add(m);
     p.innerHTML=ret;
 
     messeges.appendChild(p);
+
     scrollToBottom(messeges);
 
 }
@@ -92,12 +104,17 @@ function savemessege(){
 }
 
 function scrollToBottom(element) {
-    element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
+    element.scroll({ top: element.scrollHeight, behavior: 'auto' });
 }
 function send(benutzerid){
 
 
     const msg = document.getElementById("eingabebereich").children.item(1);
+
+    if (msg.value.replaceAll(" " ,"")==""){
+        msg.value="";
+        return;
+    }
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -109,5 +126,17 @@ function send(benutzerid){
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("benutzerid="+benutzerid+"&text="+msg.value);
+}
+function timeToString(time){
+ let ret = "/";
+    ret+=  time.at(5);
+    ret+=  time.at(6);
+    ret+=  "."+time.at(8);
+    ret+=  time.at(9);
+    ret+= " "+time.at(11);
+    ret+= time.at(12);
+    ret+= ":"+time.at(14);
+    ret+= time.at(15);
+ return ret;
 }
 
