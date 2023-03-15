@@ -18,8 +18,14 @@ async function home(){
     for(let i = 0; i<msgsL;i++){
         let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
         let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
-        console.log(benutzer);
-        setmessege(msg, true);
+        if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
+            setmessege(msg, false);
+            console.log("benutzer");
+
+        }else {
+            setmessege(msg, true);
+
+        }
          }
         }
         await delay(500);
