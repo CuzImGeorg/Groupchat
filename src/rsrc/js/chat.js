@@ -107,7 +107,7 @@ function send(benutzerid){
 
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
-    xhttp.send(message);
+    xhttp.send(JSON.stringify(message));
 
 
 }
