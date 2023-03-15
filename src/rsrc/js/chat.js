@@ -1,25 +1,35 @@
+
 home();
 function delay(time){
     return new Promise(resolve => setTimeout(resolve, time));
 }
 async function home(){
     await delay(1000);
-    setmessege("This is a Massage",true);
-    setmessege("This is my Massage, which I have written as of now",false);
-    setmessege("This is a Looooonger Massage",true);
-    console.log('Now');
-    for (let i = 0; i <= 10; i++){
-        await delay(1000);
-        setmessege("This is a later messege",true);
-        console.log('later');
+    const xml = getXml("index.php?controller=ajax&aktion=getAllM");
+    const msgs = (await xml).children.item(0).children.item(0).children.item(0);
+    const msgsL =msgs.children.length;
+    for(let i = 0; i<msgsL;i++){
+        let msg = msgs.children.item(i).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
+        let benutzer = msgs.children.item(i).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
+        console.log(benutzer);
+        setmessege(msg, true);
     }
 
+
+}
+async function getXml(str) {
+    var erg = await fetch(str);
+    var i = await erg.text();
+    const parser = new DOMParser();
+    var xmlDoc = await parser.parseFromString(i,"text/xml");
+    return xmlDoc;
+//    const v = await xmlDoc.getElementsByTagName("rows").item(0).getElementsByTagName("stationValues");
 }
 
 
 
 function setmessege(string, notown){
-    const array = []
+    const array = [];
     const strglenght =string.length;
     let j;
     for (let i = 80; i <= strglenght; i+=80){
@@ -68,4 +78,5 @@ function savemessege(){
 function scrollToBottom(element) {
     element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
 }
+
 
