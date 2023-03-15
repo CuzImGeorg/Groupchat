@@ -22,7 +22,7 @@ async function home(){
         setmessege(msg, true);
          }
         }
-        await delay(100);
+        await delay(2000);
     }
 
 }
@@ -89,7 +89,7 @@ function savemessege(){
 function scrollToBottom(element) {
     element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
 }
-function send(benutzerid) {
+function send(benutzerid){
 
 
     const msg = document.getElementById("eingabebereich").children.item(1);
@@ -98,15 +98,15 @@ function send(benutzerid) {
         benutzerid: benutzerid,
         text: msg.value
     }
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(message);
-            msg.value = "";
+            msg.value="";
         }
     };
 
-    xhttp.open("POST", 'index.php?controller=ajax&aktion=send', true);
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+    xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xhttp.send(JSON.stringify(message));
 
 
