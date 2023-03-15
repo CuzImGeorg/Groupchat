@@ -1,20 +1,29 @@
 
+let constante = 0;
 home();
 function delay(time){
     return new Promise(resolve => setTimeout(resolve, time));
 }
 async function home(){
-    await delay(1000);
+    await delay(100);
+    while(true){
+
     const xml = getXml("index.php?controller=ajax&aktion=getAllM");
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
     const msgsL =msgs.children.length;
+    let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
+        if (value>constante){
+            clear();
+            constante= value;
     for(let i = 0; i<msgsL;i++){
-        let msg = msgs.children.item(i).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
-        let benutzer = msgs.children.item(i).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
+        let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
+        let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
         console.log(benutzer);
         setmessege(msg, true);
+         }
+        }
+        await delay(100);
     }
-
 
 }
 async function getXml(str) {
@@ -26,8 +35,10 @@ async function getXml(str) {
 //    const v = await xmlDoc.getElementsByTagName("rows").item(0).getElementsByTagName("stationValues");
 }
 
-
-
+function clear(){
+    const messeges = document.getElementById('messages');
+    messeges.innerHTML="";
+}
 function setmessege(string, notown){
     const array = [];
     const strglenght =string.length;
@@ -60,11 +71,11 @@ function setmessege(string, notown){
     else ret+="<label class='midtext'>"+value+"</label>";
     ret+="<br>";
     }
-
+    const messeges = document.getElementById('messages');
     let p=document.createElement('p');
     p.classList.add(m);
     p.innerHTML=ret;
-    let messeges = document.getElementById('messages');
+
     messeges.appendChild(p);
     scrollToBottom(messeges);
 
@@ -78,5 +89,18 @@ function savemessege(){
 function scrollToBottom(element) {
     element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
 }
+function send(benutzerid){
+    const msg = document.getElementById("eingabebereich").children.item(1);
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(msg.value);
+            msg.value="";
+        }
+    };
+    xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
+    xhttp.send("benutzerid="+benutzerid+"&messege="+msg.value);
 
+
+}
 
