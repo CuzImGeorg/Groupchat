@@ -22,7 +22,7 @@ async function home(){
         setmessege(msg, true);
          }
         }
-        await delay(100);
+        await delay(2000);
     }
 
 }
@@ -106,7 +106,7 @@ function send(benutzerid){
     };
 
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xhttp.send(JSON.stringify(message));
 
 
