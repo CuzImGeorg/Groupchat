@@ -6,6 +6,7 @@ class Controller extends ControllerBase {
 
     public function getAllM() {
         $this->addContext("msgs", Message::getLast20());
+        header('Content-type: text/xml');
     }
 
 
