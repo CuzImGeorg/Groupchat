@@ -20,7 +20,6 @@ async function home(){
         let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
         if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
             setmessege(msg, false);
-            console.log("benutzer");
 
         }else {
             setmessege(msg, true);
