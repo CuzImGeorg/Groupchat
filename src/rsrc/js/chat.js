@@ -90,16 +90,24 @@ function scrollToBottom(element) {
     element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
 }
 function send(benutzerid){
+
+
     const msg = document.getElementById("eingabebereich").children.item(1);
     const xhttp = new XMLHttpRequest();
+    let message = {
+        benutzerid: benutzerid,
+        text: msg.value
+    }
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(msg.value);
+            console.log(message);
             msg.value="";
         }
     };
+
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
-    xhttp.send("benutzerid="+benutzerid+"&messege="+msg.value);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+    xhttp.send(message);
 
 
 }
