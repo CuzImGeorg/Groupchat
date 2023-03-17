@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,8 @@
     </div>
     <div id="eingabebereich">
         <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
-        <textarea name="eingabe" id="eingabe" > </textarea>
-        <input type="button"  id="send" onclick="savemessege()" value="SEND">
+        <textarea name="eingabe" id="eingabe" onkeydown="sendOnReturn(<?=$benutzer->getId()?>)" > </textarea>
+        <input type="button"  id="send" onclick="send(<?=$benutzer->getId()?>)" value="SEND">
     </div>
 
 

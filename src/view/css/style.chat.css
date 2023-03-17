@@ -75,7 +75,6 @@ body{
     float:right;
 }
 #messages{
-
     border-radius: var(--rounding);
     position: fixed;
     left: 50%;
@@ -85,24 +84,22 @@ body{
     background: var(--dark);
     height: 85%;
     width: 80%;
+    overflow: auto;
 }
 
-#messages .messege{
 
-   width: 50%;
+#messages .messege{
+    width: 50%;
     padding: 1% 0;
-    transform: translate(3%, 30%);
+    transform: translate(3%, 2%);
 }
 #messages .ownmessege{
     width: 50%;
     padding: 1% 0 2% 50%;
-    transform: translate(-3%, 30%);
+    transform: translate(-3%, 2%);
     text-align: right;
 }
 
-#messages p{
-    animation: append-animate .3s linear;
-}
  label.firsttext{
     padding-top: 2%;
     border-top-left-radius: var(--rounding);
