@@ -13,7 +13,7 @@
     </div>
     <div id="eingabebereich">
         <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
-        <textarea name="eingabe" id="eingabe" > </textarea>
+        <textarea name="eingabe" id="eingabe" onkeydown="sendOnReturn(<?=$benutzer->getId()?>)" > </textarea>
         <input type="button"  id="send" onclick="send(<?=$benutzer->getId()?>)" value="SEND">
     </div>
 

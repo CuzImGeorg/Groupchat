@@ -1,19 +1,25 @@
-
+let Scrollvalue = 0;
 let constante = 0;
+
 home();
 function delay(time){
     return new Promise(resolve => setTimeout(resolve, time));
 }
 async function home(){
-    await delay(100);
-    while(true){
 
+    await delay(100);
+
+    while(true){
+    
     const xml = getXml("index.php?controller=ajax&aktion=getAllM");
     //msgs == null mocht probleme
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
     const msgsL =msgs.children.length;
     let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
         if (value>constante){
+            const div =document.getElementById('messages');
+            if (div.clientHeight >= div.scrollHeight-300) Scrollvalue==div.scrollHeight+1000;
+            Scrollvalue = div.clientHeight;
             clear();
             constante= value;
     for(let i = 0; i<msgsL;i++){
@@ -28,7 +34,9 @@ async function home(){
 
         }
          }
+            div.clientHeight = Scrollvalue;
         }
+
         await delay(500);
     }
 
@@ -81,12 +89,12 @@ function setmessege(string, notown, benutzername, time){
     else if (pos==array.length-1)ret+="<label class='lasttext'>"+value+"</label>";
     else ret+="<label class='midtext'>"+value+"</label>";
 
-    if(array.length>2)ret+="<br>";
+    if(array.length>1)ret+="<br>";
 
     }
-    if(array.length>2)ret+="<br>";
-    if(notown && array.length>2) ret+= benutzername +newtime+":";
-    if (!notown) ret +=":"+benutzername+ newtime;
+    if(array.length>1)ret+="<br>";
+
+    if (!notown||array.length>2) ret +=":"+benutzername+ newtime;
 
     const messeges = document.getElementById('messages');
     let p=document.createElement('p');
@@ -95,7 +103,7 @@ function setmessege(string, notown, benutzername, time){
 
     messeges.appendChild(p);
 
-    scrollToBottom(messeges);
+    //scrollToBottom(messeges);
 
 }
 function savemessege(){
@@ -139,5 +147,11 @@ function timeToString(time){
     ret+= ":"+time.at(14);
     ret+= time.at(15);
  return ret;
+}
+function sendOnReturn(benutzerid) {
+    let text = document.getElementById('eingabe').value;
+    if(text.includes("\n")){
+        send(benutzerid);
+    }
 }
 
