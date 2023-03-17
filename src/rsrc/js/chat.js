@@ -138,10 +138,10 @@ function send(benutzerid){
 }
 function timeToString(time){
  let ret = "/";
-    ret+=  time.at(5);
-    ret+=  time.at(6);
-    ret+=  "."+time.at(8);
+    ret+=  time.at(8);
     ret+=  time.at(9);
+    ret+=  "."+time.at(5);
+    ret+=  time.at(6);
     ret+= " "+time.at(11);
     ret+= time.at(12);
     ret+= ":"+time.at(14);

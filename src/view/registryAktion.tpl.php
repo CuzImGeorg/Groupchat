@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Registry</title>
+    <title>Inf4Chat</title>
     <link rel="stylesheet" href="src/view/css/style.registry.css">
 
 </head>
 <body>
 <form id="form" action="index.php?aktion=registry" method="POST" >
-
+    <a href="index.php?aktion=login">Zurück → </a>
     <div>
         <p style="float: left">
         <label for="vorname">Vorname<br></label>
@@ -25,19 +25,22 @@
         <input type="text" name="nickname" id="nickname"  placeholder="Nickname" required />
     </div>
     <div>
-
+        <p style="float: left">
         <label for="password">Password<br></label>
         <input type="password" name="password" id="password" placeholder="Password" required>
-
-    </div>
-    <div>
+        </p>
+        <p style="float: right">
         <label for="confpassword">Bestätige<br></label>
         <input type="password" name="confpassword" id="confpassword" placeholder="Password"  required>
+        </p>
+    </div>
+    <div>
+
 
     </div>
     <div style="margin-top: 1rem">
         <input  style="margin-right: .5rem" type="submit" value="Registrieren" />
-        <button style="margin-left: .5rem" ><a href="index.php?aktion=login">Login </a></button>
+
     </div>
 </form>
 </body>

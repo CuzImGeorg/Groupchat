@@ -33,9 +33,12 @@ input, button {
     background: var(--middle)
 }
 a {
-    background: var(--middle);
+    position: absolute;
+    right: 5%;
+    top: 5%;
     color: var(--text);
     text-decoration: none;
+
 }
 form{
     display: flex;

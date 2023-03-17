@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Chat</title>
+    <title>Inf4Chat</title>
     <script src="src/rsrc/js/chat.js"></script>
     <link rel="stylesheet" href="src/view/css/style.chat.css">
 </head>
