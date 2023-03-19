@@ -14,7 +14,7 @@ async function home(){
     const xml = getXml("index.php?controller=ajax&aktion=getAllM");
 
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
-
+    const msgsL =msgs.children.length;
         let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
         if (value>constante){
             const div =document.getElementById('messages');
@@ -96,8 +96,8 @@ function scrollToBottom(element) {
 function send(benutzerid){
 
 
-    const msg = document.getElementById("eingabebereich").children.item(1);
-
+    const msg = document.getElementById("eingabebereich").children.item(2);
+    console.log(msg);
     if (msg.value.replaceAll(" " ,"")==""){
         msg.value="";
         return;
