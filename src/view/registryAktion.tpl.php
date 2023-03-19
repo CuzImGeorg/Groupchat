@@ -5,6 +5,7 @@
     <title>Zeichenaustauschanwendung</title>
     <link rel="stylesheet" href="src/view/css/style.registry.css">
     <link rel="shortcut icon" type="image/x-icon" href="src/rsrc/logo.png" />
+    <script src="src/rsrc/js/registry.js"></script>
 
 </head>
 <body>
@@ -31,12 +32,12 @@
         <input type="password" class="inputs" name="password" id="password" placeholder="Password" required>
         </p>
         <p style="float: right">
-            <label for="confpassword">Bestätige<br></label>
+            <label for="confpassword">Bestätigen<br></label>
             <input type="password"  class="inputs"name="confpassword" id="confpassword" placeholder="Password"  required>
         <p/>
     </div>
     <div >
-        <input  class="mainbtn" type="submit" value="Registrieren" />
+        <input  class="mainbtn" onclick="auslesbar()" type="submit" value="Registrieren" />
 
     </div>
 </form>

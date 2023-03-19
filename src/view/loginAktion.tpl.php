@@ -5,7 +5,7 @@
         <title>Zeichenaustauschanwendung</title>
         <link rel="stylesheet" href="src/view/css/style.registry.css">
         <link rel="shortcut icon" type="image/x-icon" href="src/rsrc/logo.png" />
-
+        <script src="src/rsrc/js/registry.js"></script>
     </head>
     <body>
        <form  action="index.php?aktion=login" method="POST" >
@@ -25,7 +25,7 @@
         </div>
         <div>
 
-            <input class="mainbtn" type="submit" value="Login" />
+            <input class="mainbtn" type="submit" onclick="auslesbar()" value="Login" />
 
         </div>
        </form>

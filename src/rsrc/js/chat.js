@@ -26,12 +26,15 @@ async function home(){
                 let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
                 let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
                 let time = msgs.children.item(msgsL-i-1).getElementsByTagName('time').item(0).childNodes.item(0).nodeValue;
+
                 msg = msg.replaceAll("LessThan", "<");
                 msg = msg.replaceAll("GreaterThan", ">");
                 if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
                     setmessege(msg, false, benutzer,time);
 
                 }else {
+                    benutzer = benutzer.replaceAll("GreatherThan", "&gt;");
+                    benutzer = benutzer.replaceAll("LessThan", "&lt;");
                     setmessege(msg, true, benutzer,time);
 
                 }
@@ -83,6 +86,7 @@ function setmessege(string, notown, benutzername, time) {
 
     console.log(textarea.scrollHeight+"px")
     if (textarea.scrollHeight>70) textarea.style.height = textarea.scrollHeight+"px";
+    scrollToBottom(messeges);
 }
 function savemessege(){
     const text = document.getElementById('eingabebereich').children.item(1);
@@ -136,5 +140,6 @@ function sendOnReturn(benutzerid) {
     if(text.includes("\n")){
         send(benutzerid);
     }
+
 }
 
