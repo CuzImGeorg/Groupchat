@@ -11,16 +11,20 @@
 
         <div>
             <label for="nickname">Nickname<br></label>
-            <input type="text" name="nickname" id="nickname" placeholder=<?=$benutzer->getNickname()?> required />
+            <input class="inputs" type="text" name="nickname" id="nickname" placeholder=<?=$benutzer->getNickname()?> required />
+
        </div>
 
         <div>
-            <label for="password">Password<br></label>
-            <input type="password" name="password" id="password"  placeholder=<?= $benutzer->getPassword() ?> required>
+                <label for="password">Password<br></label>
+                <input type="password" class="inputs" name="password" id="password"  placeholder=<?= $benutzer->getPassword() ?> required>
         </div>
         <div>
-            <button><a href="index.php?aktion=registry">Registrieren</a></button>
-            <input type="submit" value="login" />
+            <a  href="index.php?controller=index&aktion=registry">Registrieren</a>
+        </div>
+        <div>
+
+            <input class="mainbtn" type="submit" value="Login" />
 
         </div>
        </form>
