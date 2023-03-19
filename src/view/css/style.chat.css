@@ -93,7 +93,8 @@ body{
 #messages{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    border-radius: var(--rounding);
+    border-top-left-radius: var(--rounding);
+    border-top-right-radius: var(--rounding);
     position: fixed;
     left: 50%;
     top: 20px;
