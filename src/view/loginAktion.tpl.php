@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <title>Zeichenaustauschanwendung</title>
         <link rel="stylesheet" href="src/view/css/style.registry.css">
+        <link rel="shortcut icon" type="image/x-icon" href="src/rsrc/logo.png" />
 
     </head>
     <body>

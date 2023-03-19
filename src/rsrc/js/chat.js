@@ -15,7 +15,6 @@ async function home(){
 
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
 
-        const msgsL =msgs.children.length;
         let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
         if (value>constante){
             const div =document.getElementById('messages');
