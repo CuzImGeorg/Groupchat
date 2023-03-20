@@ -1,5 +1,5 @@
 <?php
-require_once('controllerBase.php');
+require_once('ControllerBase.php');
 
 class Controller extends ControllerBase {
 

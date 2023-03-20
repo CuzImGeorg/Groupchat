@@ -12,30 +12,37 @@ async function home(){
     while(true){
     
     const xml = getXml("index.php?controller=ajax&aktion=getAllM");
-    //msgs == null mocht probleme
+
     const msgs = (await xml).children.item(0).children.item(0).children.item(0);
     const msgsL =msgs.children.length;
-    let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
+        let value = msgs.children.item(0).getElementsByTagName('id').item(0).childNodes.item(0).nodeValue;
         if (value>constante){
             const div =document.getElementById('messages');
             if (div.clientHeight >= div.scrollHeight-300) Scrollvalue==div.scrollHeight+1000;
             Scrollvalue = div.clientHeight;
             clear();
             constante= value;
-    for(let i = 0; i<msgsL;i++){
-        let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
-        let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
-        let time = msgs.children.item(msgsL-i-1).getElementsByTagName('time').item(0).childNodes.item(0).nodeValue;
-        if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
-            setmessege(msg, false, benutzer,time);
+            for(let i = 0; i<msgsL;i++){
+                let msg = msgs.children.item(msgsL-i-1).getElementsByTagName('msgtext').item(0).childNodes.item(0).nodeValue;
+                let benutzer = msgs.children.item(msgsL-i-1).getElementsByTagName('benutzername').item(0).childNodes.item(0).nodeValue;
+                let time = msgs.children.item(msgsL-i-1).getElementsByTagName('time').item(0).childNodes.item(0).nodeValue;
 
-        }else {
-            setmessege(msg, true, benutzer,time);
+                msg = msg.replaceAll("LessThan", "<");
+                msg = msg.replaceAll("GreaterThan", ">");
+                if(document.getElementById("benutzername").innerHTML.replace(" ", "").startsWith(benutzer)) {
+                    setmessege(msg, false, benutzer,time);
 
-        }
-         }
+                }else {
+                    benutzer = benutzer.replaceAll("GreatherThan", "&gt;");
+                    benutzer = benutzer.replaceAll("LessThan", "&lt;");
+                    setmessege(msg, true, benutzer,time);
+
+                }
+            }
             div.clientHeight = Scrollvalue;
         }
+
+
 
         await delay(500);
     }
@@ -54,57 +61,32 @@ function clear(){
     const messeges = document.getElementById('messages');
     messeges.innerHTML="";
 }
-function setmessege(string, notown, benutzername, time){
-    const newtime =timeToString(time);
-    const array = [];
-    const strglenght =string.length;
-    let j;
-    for (let i = 80; i <= strglenght; i+=80){
-        const thisstr =string.slice(i-80,i)
-        array.push(thisstr);
-        j=i;
-    }
-    const idiff= strglenght-j;
-    let laststr =string.slice(strglenght-idiff,strglenght);
-    if (strglenght>80){
-        let l = laststr.length;
-        while(l<80){
-            l++;
-            laststr=laststr+" ";
-        }
-    }
-    array.push(laststr);
 
+function setmessege(string, notown, benutzername, time) {
+    const newtime = timeToString(time);
     let m = notown ? "messege" : "ownmessege";
     let ret = "";
-    if (notown&&array.length<=1) ret= benutzername +newtime+":";
-    array.forEach(sliceString)
-
-    function sliceString(value, pos, array){
-    value=value.replaceAll(' ',"&nbsp;");
-    value=value.replaceAll('\n',"&nbsp;");
-
-    if (pos==0 && pos==array.length-1) ret+="<label class='oneliner'>"+value+"</label>";
-    else if (pos==0) ret+="<label class='firsttext'>"+value+"</label>";
-    else if (pos==array.length-1)ret+="<label class='lasttext'>"+value+"</label>";
-    else ret+="<label class='midtext'>"+value+"</label>";
-
-    if(array.length>1)ret+="<br>";
-
-    }
-    if(array.length>1)ret+="<br>";
-
-    if (!notown||array.length>2) ret +=":"+benutzername+ newtime;
-
+    if (notown) ret = "<span class='user' style='float: left'>"+benutzername+"</span> " ;
+    ret += "<textarea readonly>" + string + "</textarea>"
     const messeges = document.getElementById('messages');
-    let p=document.createElement('p');
+    let p = document.createElement('p');
     p.classList.add(m);
-    p.innerHTML=ret;
+    p.innerHTML = ret;
 
     messeges.appendChild(p);
+    let itemNr = 0;
+    if (notown) itemNr=1;
+    const textarea = p.children.item(itemNr);
+    const AoText = textarea.innerHTML.length;
 
-    //scrollToBottom(messeges);
+    if (AoText<6) textarea.style.width=(AoText*4) + "%";
+    else if (AoText<20) textarea.style.width=(AoText*2) + "%";
+    else if (AoText<60)textarea.style.width=(AoText) + "%";
+    else textarea.style.width=80 + "%";
 
+    console.log(textarea.scrollHeight+"px")
+    if (textarea.scrollHeight>70) textarea.style.height = textarea.scrollHeight+"px";
+    scrollToBottom(messeges);
 }
 function savemessege(){
     const text = document.getElementById('eingabebereich').children.item(1);
@@ -118,12 +100,16 @@ function scrollToBottom(element) {
 function send(benutzerid){
 
 
-    const msg = document.getElementById("eingabebereich").children.item(1);
-
+    const msg = document.getElementById("eingabebereich").children.item(2);
+    console.log(msg);
     if (msg.value.replaceAll(" " ,"")==""){
         msg.value="";
         return;
     }
+    let retValue = msg.value;
+    retValue= retValue.replaceAll(">","GreaterThan");
+    retValue= retValue.replaceAll("<","LessThan");
+
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -134,7 +120,7 @@ function send(benutzerid){
 
     xhttp.open("POST", 'index.php?controller=ajax&aktion=send',true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("benutzerid="+benutzerid+"&text="+msg.value);
+    xhttp.send("benutzerid="+benutzerid+"&text="+retValue);
 }
 function timeToString(time){
  let ret = "/";
@@ -149,9 +135,11 @@ function timeToString(time){
  return ret;
 }
 function sendOnReturn(benutzerid) {
+    //FOTZE DU HOSCH SCHUN DIE ID SCHREIB UM
     let text = document.getElementById('eingabe').value;
     if(text.includes("\n")){
         send(benutzerid);
     }
+
 }
 

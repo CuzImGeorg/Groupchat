@@ -1,8 +1,9 @@
 :root {
     --text:#fff;
-    --light:#544e66;
-    --middle: #3e3853;
-    --dark: #292240;
+    --light: #313131;
+    --background: #2a2929;
+    --dark: #1e1e1e;
+    --ascend:rgba(67, 154, 120, 0.85);
     --rounding:1rem;
 }
 
@@ -10,9 +11,10 @@ body{
     font-family: monospace;
     font-weight: bold;
     color: var(--text);
-    background:var(--middle);
+    background:var(--background);
 }
 label{
+    margin: 2rem;
     color: var(--text);
     font-size: 1.5rem;
     width: 10rem;
@@ -20,25 +22,56 @@ label{
     margin-bottom: 15px;
     margin-right: 10px;
 }
-input, button {
+input{
 
     font-size: 1.5rem;
-    border-style: none;
     color: var(--text);
-    margin-bottom: 15px;
-    margin-right: 10px;
-    width: 10rem;
-    height: 2rem;
+    margin:2rem;
     margin-top: auto;
-    background: var(--middle)
+    background: none;
+    padding: 7%;
+    transition:all .3s ease-in-out;
+
 }
+.mainbtn{
+
+    margin-left: 3%;
+    position: static;
+    border: solid 3px var(--ascend);
+}
+.mainbtn:hover{
+    margin-left: -15%;
+    padding: 7% 25%;
+
+
+}
+
+.inputs{
+    width: 10rem;
+    padding: 1%;
+    background: none;
+    border: none;
+    border-bottom: solid 3px var(--ascend);
+}
+.inputs:focus,
+.inputs:valid{
+
+    padding: 10%;
+    padding-left: 0;
+
+}
+
+input:focus{
+    outline: none;
+}
+
 a {
     position: absolute;
-    right: 5%;
-    top: 5%;
+    top: 1rem;
+    right: 1rem;
+    background: none;
     color: var(--text);
     text-decoration: none;
-
 }
 form{
     display: flex;
@@ -51,7 +84,7 @@ form{
     position: fixed;
     left: 50%;
     top: 20px;
-
+    width: auto;
     transform: translate(-50%, 0);
     margin:  auto;
     background: var(--dark);
