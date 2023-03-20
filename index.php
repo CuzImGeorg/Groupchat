@@ -9,7 +9,7 @@
     $controller = isset($_GET['controller'])?$_GET['controller']:'index';
     $controller = ($controller) . 'Controller';
 
-    autoloadControllers($controller);
+    autoloadControllers(ucfirst($controller));
     $controller = new Controller();
 
     if (method_exists($controller, $aktion)){

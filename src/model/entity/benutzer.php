@@ -5,7 +5,10 @@ class Benutzer {
 
     protected static $table = "benutzer";
     private int $id = 0;
-    private string $vorname, $nachname, $nickname, $password;
+    private string $vorname;
+    private string $nachname ;
+    private string $nickname;
+    private string $password;
 
     /**
      * @return int

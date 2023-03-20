@@ -2,7 +2,7 @@ CREATE TABLE benutzer(
 	id serial PRIMARY KEY,
 	vorname varchar(63),
 	nachname varchar(63),
-	nickname varchar(63),
+	nickname varchar(63) unique ,
 	password varchar(63)
 
 
