@@ -1,3 +1,4 @@
+"use strict";
 let Scrollvalue = 0;
 let constante = 0;
 
