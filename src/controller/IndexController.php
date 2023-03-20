@@ -31,9 +31,9 @@ class Controller extends ControllerBase {
                 } catch (PDOException $e) {
                     redirect("index.php?aktion=error&msg=ungültiger%20Nickname");
                 }
-                redirect("index.php?aktion=error&msg=Passwörter%20stimmen%20nicht%20überrein");
+                redirect("index.php?");
             }else {
-                redirect("index.php?aktion=error");
+                redirect("index.php?aktion=error&msg=Passwörter%20stimmen%20nicht%20überrein");
             }
         }
    }
