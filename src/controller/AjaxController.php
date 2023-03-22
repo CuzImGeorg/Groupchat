@@ -1,7 +1,7 @@
 <?php
-require_once('ControllerBase.php');
+require_once('AbstractBase.php');
 
-class Controller extends ControllerBase {
+class AjaxController extends AbstractBase {
 
 
     public function getAllM() {
