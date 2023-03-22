@@ -10,10 +10,17 @@ async function home(){
 
     await delay(100);
     document.getElementById('eingabe').onkeydown= (event) => {
+        console.log(event.key);
         if (event.key == "Enter"){
+
             send(document.getElementById('bid').value);
         }
 
+
+    };
+    document.getElementById('benutzername').onclick= (event) => {
+
+    location.href="index.php";
 
     };
 
@@ -142,8 +149,3 @@ function timeToString(time){
     ret+= time.at(15);
  return ret;
 }
-function sendOnReturn(benutzerid) {
-    //FOTZE DU HOSCH SCHUN DIE ID SCHREIB UM
-
-}
-

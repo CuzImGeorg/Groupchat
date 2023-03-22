@@ -17,8 +17,8 @@
     <div id="unique">
         <div id="eingabebereich">
             <input id="bid" type="hidden" value="<?=$benutzer->getId()?>" >
-            <label id="benutzername"> <?=$benutzer->getNickname()?> </label>
-            <textarea name="eingabe" id="eingabe" onkeydown="sender(this.event)" > </textarea>
+             <button id="benutzername"> <?=$benutzer->getNickname()?>  </button>
+            <textarea name="eingabe" id="eingabe" > </textarea>
             <button type="button"  id="send" onclick="send(<?=$benutzer->getId()?>)" > send</button>
         </div>
     </div>

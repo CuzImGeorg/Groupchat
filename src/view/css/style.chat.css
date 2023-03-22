@@ -58,17 +58,25 @@ body{
 }
 
 #benutzername{
-
+    float: right;
+    font-size: 1rem;
+    font-family: sans-serif;
     border: none;
     border-radius: var(--rounding);
-
+    color: var(--text);
     background:var(--light);
     padding: 1rem;
     margin: 1.5%;
     float:left;
     max-width: 14%;
     overflow: hidden;
+    transition: all .3s;
 }
+#benutzername:hover{
+    background-color: var(--ascend);
+
+}
+
 #eingabe:focus{
     border: none;
     outline: none;
@@ -91,6 +99,9 @@ body{
 }
 #send:hover{
     background-color: var(--ascend);
+}
+#benutzername:hover:before{
+    content: "Abmelden von";
 }
 #messages{
     -ms-overflow-style: none;  /* IE and Edge */
