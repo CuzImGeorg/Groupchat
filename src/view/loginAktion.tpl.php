@@ -12,13 +12,13 @@
 
         <div>
             <label for="nickname">Nickname<br></label>
-            <input class="inputs" type="text" name="nickname" id="nickname" placeholder=<?=$benutzer->getNickname()?> required />
+            <input class="inputs" type="text" name="nickname" id="nickname" placeholder="Nickname"  required />
 
        </div>
 
         <div>
                 <label for="password">Password<br></label>
-                <input type="password" class="inputs" name="password" id="password"  placeholder=<?= $benutzer->getPassword() ?> required>
+                <input type="password" class="inputs" name="password" id="password"  placeholder="Password" required>
         </div>
         <div>
             <a  href="index.php?controller=index&aktion=registry">Registrieren</a>

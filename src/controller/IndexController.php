@@ -1,18 +1,17 @@
 <?php
-require_once('ControllerBase.php');
+require_once('AbstractBase.php');
 
-class Controller extends ControllerBase {
+class IndexController extends AbstractBase {
 
 
    public function login() {
         if($_POST){
             $b = Benutzer::getByNickNameAndPassword($_POST['nickname'], $_POST['password']);
             if(!$b)  {
-                $b = new Benutzer(); $b->setNickname("Nickname"); $b->setPassword("Password");
-                $this->addContext("benutzer", $b);
+
             }else {
                 $this->addContext("benutzer", $b);
-                $this->addContext("template", "chat");
+                $this->setTemplate("chatAktion");
             }
         }
         else{
