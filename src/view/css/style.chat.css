@@ -66,6 +66,8 @@ body{
     padding: 1rem;
     margin: 1.5%;
     float:left;
+    max-width: 14%;
+    overflow: hidden;
 }
 #eingabe:focus{
     border: none;

@@ -1,3 +1,4 @@
+"use strict";
 let Scrollvalue = 0;
 let constante = 0;
 
@@ -8,6 +9,13 @@ function delay(time){
 async function home(){
 
     await delay(100);
+    document.getElementById('eingabe').onkeydown= (event) => {
+        if (event.key == "Enter"){
+            send(document.getElementById('bid').value);
+        }
+
+
+    };
 
     while(true){
     
@@ -39,7 +47,7 @@ async function home(){
 
                 }
             }
-            div.clientHeight = Scrollvalue;
+            scrollToBottom(div);
         }
 
 
@@ -136,10 +144,6 @@ function timeToString(time){
 }
 function sendOnReturn(benutzerid) {
     //FOTZE DU HOSCH SCHUN DIE ID SCHREIB UM
-    let text = document.getElementById('eingabe').value;
-    if(text.includes("\n")){
-        send(benutzerid);
-    }
 
 }
 

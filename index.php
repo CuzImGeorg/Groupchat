@@ -5,8 +5,8 @@
     spl_autoload_register('autoloadEntities');
     spl_autoload_register('autoloadTraits');
 
-    $aktion = isset($_GET['aktion'])?$_GET['aktion']:'login';
-    $controller = isset($_GET['controller'])?$_GET['controller']:'index';
+    $aktion = $_GET['aktion'] ?? 'login';
+    $controller = $_GET['controller'] ?? 'index';
     $controller = ($controller) . 'Controller';
 
     autoloadControllers(ucfirst($controller));
