@@ -5,7 +5,6 @@ class Message
     use ActiveRecordable, Findable,Deletable,Persistable;
 
     protected static $table = "message";
-••••••
     private int $id = 0;
     private int$benutzerid;
     private string $msgtext;
